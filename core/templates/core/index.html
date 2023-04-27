@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DnD Character Forge</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Luminiera+Fantasy" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      body {
+        font-family: 'Luminari', Georgia, 'Times New Roman', Times, serif;
+        color: white;
+      }
+      .jumbotron-transparent {
+        text-align: center;
+        background-color: rgba(0,0,0,0);
+      }
+      body{
+        background-image: url('https://wallpaperaccess.com/full/1578713.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+ 
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="#" >CharacterForge</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron jumbotron-transparent">
+      <h1 style="font-size: 72px;">Welcome to DnD CharacterForge!</h1>
+      <p style="font-size: 24px;">Where you can create and keep track of all your DnD characters in one place!</p>
+      <a href="{% url 'accounts:sign-up' %}" class="btn btn-primary btn-lg">Sign up</a>
+
+    </div>
+    {%if user.is_authenticated %}
+      <p>Welcome, {{ user.username }}! </p>
+      <a>Logout</a>
+    {% else %} 
+      <form method="post"> 
+        {% csrf_token %} 
+        {{ form.as_p }} 
+        <button type = "submit" href="{% url 'accounts:sign-in' %}">Login</button>
+      </form>
+    {% endif %}
+  </body>
+</html>
