@@ -14,7 +14,14 @@ import csv
 
 @login_required
 def CharacterView(request):
-    form = CharacterForm(request.POST or None)
+    if request.method == 'POST':
+        form = CharacterForm(request.POST)
+        if form.is_valid():
+            new_character = form.save(commit=False)
+            new_character.user = request.user
+            new_character.save() 
+    else:
+        form = CharacterForm()
     return render(request, 'createcharacter.html', {"form":form})
 
 # class CharacterView(generic.FormView):

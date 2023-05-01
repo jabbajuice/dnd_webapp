@@ -46,4 +46,5 @@ class Player_Characters(models.Model):
     Appearance = models.TextField()
     PersonalityTraits = models.TextField()
     DateCreated = models.DateTimeField(auto_now_add=True)
+    UserID = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=UserProfile.objects.latest('id').id)
 
