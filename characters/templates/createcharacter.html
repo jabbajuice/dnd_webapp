@@ -22,7 +22,22 @@
         background-repeat: no-repeat;
  
       }
-
+      #form {
+        text-align: center;
+        color: black;
+        font-size: 20px;
+        border-radius: 6px;
+        border-collapse: separate;
+        padding: 10px;
+      }
+      
+      .form-field{
+        text-align: center;
+      }
+      h1 {
+        text-align: center;
+        color: black;
+      }
     </style>
   </head>
   <body>
@@ -45,4 +60,14 @@
         </div>
       </div>
     </nav>
-    <div>{{form}}></form></div>
+    <h1>New Character Sheet</h1>
+    <form id="form" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <p class="form-field">
+            {{field.label_tag}}
+            {{field}}
+        </p>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>

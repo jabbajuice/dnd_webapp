@@ -1,7 +1,7 @@
 from django import forms    
 from characters.models import Player_Characters
 
-class CharacterForm(forms.ModelForm):
+class CharacterForm(forms.Form):
 
     RACE_CHOICES = (
     ("Human", "human"),
@@ -31,20 +31,25 @@ class CharacterForm(forms.ModelForm):
     )
     
     characterName = forms.CharField(label="Character Name", max_length=100)
-    race = forms.ChoiceField(choices=RACE_CHOICES)
-    classType = forms.ChoiceField(choices=CLASS_CHOICES)
-    strength = forms.IntegerField(label="Strength:")
-    dexterity = forms.IntegerField(label="Dexterity:")
-    constitution = forms.IntegerField(label="Constitution:")
-    intelligence = forms.IntegerField(label="Intelligence:")
-    wisdom = forms.IntegerField(label="Wisdom:")
-    charisma = forms.IntegerField(label="Charisma:")
-    skills = forms.IntegerField(label="Skills:")
-    background = forms.TextInput()
-    equipment = forms.TextInput()
-    spells = forms.TextInput()
-    appearance = forms.TextInput()
-    personalityTraits = forms.TextInput()
+    Race = forms.ChoiceField(choices=RACE_CHOICES, label="Race")
+    Class = forms.ChoiceField(choices=CLASS_CHOICES, label="Class")
+    Strength = forms.IntegerField(label="Strength")
+    Dexterity = forms.IntegerField(label="Dexterity")
+    Constitution = forms.IntegerField(label="Constitution")
+    Intelligence = forms.IntegerField(label="Intelligence")
+    Wisdom = forms.IntegerField(label="Wisdom")
+    Charisma = forms.IntegerField(label="Charisma")
+    Skills = forms.CharField(widget=forms.Textarea, label="Skills")
+    Background = forms.CharField(widget=forms.Textarea, label="Background")
+    Equipment = forms.CharField(widget=forms.Textarea, label="Equipment")
+    Spells = forms.CharField(widget=forms.Textarea, label="Spells")
+    Appearance = forms.CharField(widget=forms.Textarea, label="Appearance")
+    Personality = forms.CharField(widget=forms.Textarea, label="Personality")
+
+    # Set the label_suffix to an empty string to remove the colon from the label
+    label_suffix = ""
+
+
 
     class Meta:
         model = Player_Characters

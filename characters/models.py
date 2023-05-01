@@ -30,7 +30,7 @@ class Player_Characters(models.Model):
     )
 
 
-    CharacterName = models.TextField()
+    CharacterName = models.CharField(max_length=50)
     Race = models.CharField(max_length=30,choices = RACE_CHOICES)
     Class = models.CharField(max_length=30, choices=CLASS_CHOICES)
     Strength = models.IntegerField()
