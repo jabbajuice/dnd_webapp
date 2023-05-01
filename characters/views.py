@@ -11,14 +11,15 @@ from .forms import CharacterForm
 import plotly as py 
 
 
-# def CharacterView(request):
-#     return render(request, 'createcharacter.html')
+def CharacterView(request):
+    form = CharacterForm
+    return render(request, 'createcharacter.html', {"form":form})
 
-class CharacterView(generic.FormView):
-    template_name = 'characters/createcharacters.html'
-    form_class = CharacterForm
+# class CharacterView(generic.FormView):
+#     template_name = 'characters/createcharacters.html'
+#     form_class = CharacterForm
 
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return HttpResponseRedirect(self.get_success_url())
+    # def form_valid(self, form):
+    #     user = form.save()
+    #     login(self.request, user)
+    #     return HttpResponseRedirect(self.get_success_url())

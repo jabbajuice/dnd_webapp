@@ -31,8 +31,8 @@ class CharacterForm(forms.ModelForm):
     )
     
     characterName = forms.CharField(label="Character Name", max_length=100)
-    race = forms.ChoiceField(choices=RACE_CHOICES,label="Race")
-    classType = forms.ChoiceField(choices=CLASS_CHOICES,label="Class Type")
+    race = forms.ChoiceField(choices=RACE_CHOICES)
+    classType = forms.ChoiceField(choices=CLASS_CHOICES)
     strength = forms.IntegerField(label="Strength:")
     dexterity = forms.IntegerField(label="Dexterity:")
     constitution = forms.IntegerField(label="Constitution:")
@@ -40,14 +40,14 @@ class CharacterForm(forms.ModelForm):
     wisdom = forms.IntegerField(label="Wisdom:")
     charisma = forms.IntegerField(label="Charisma:")
     skills = forms.IntegerField(label="Skills:")
-    background = forms.TextInput(label="Background")
-    equipment = forms.TextInput(label="Equipment")
-    spells = forms.TextInput(label="Spells")
-    appearance = forms.TextInput(label="Appearance")
-    personalityTraits = forms.TextInput(label="Personality Traits")
+    background = forms.TextInput()
+    equipment = forms.TextInput()
+    spells = forms.TextInput()
+    appearance = forms.TextInput()
+    personalityTraits = forms.TextInput()
 
     class Meta:
         model = Player_Characters
-        fields = ('Race','Class','Strength','Dexterity','Constitution',
+        fields = ('CharacterName','Race','Class','Strength','Dexterity','Constitution',
                   'Intelligence','Wisdom','Charisma','Skills','Background',
-                  'Equipment','Spells','Appearance','Personality Traits')
+                  'Equipment','Spells','Appearance','PersonalityTraits')
