@@ -7,6 +7,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
+      h1{
+        text-align: center;
+      }  
+
+      h2{
+        font-size: medium;
+      }
       body {
         font-family: 'Luminari', Georgia, 'Times New Roman', Times, serif;
         color: white;
@@ -21,7 +28,12 @@
         background-repeat: no-repeat;
  
       }
-      
+      ul{
+        color: black;
+        font-size: medium;
+      }
+
+     
     </style>
 </head>
 <body>
@@ -44,14 +56,20 @@
           </div>
         </div>
       </nav>
+    <h1 id="Name">{{ user.username }}'s Dashboard</h1>
+<p> 
+
+</p>
+    <div id="characters-container" style="border: 2px solid white; padding: 5px; border-radius: 10 px; width: 1000px;">
+        <h2 style="text-align: center; font-size: large;">My Characters</h2>
+        <ul>
+            {% for character in characters %}
+            <li><a href="{% url 'accounts:account-details' character.id %}">{{ character.CharacterName }}</a> - {{character.Class}}/{{character.Race}}</li>
+            {% endfor %} 
+        </ul>
+        <a href="{% url 'characters:create characters' %}" class="btn btn-primary" id="myButton" style="margin-top: 10px; margin-left: 400px;">Character Creation Sheet</a>
+    </div>
     
-    <h1>Sign up now!</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Next ></button>
-    </form>
-    <br>
-    <a href="{% url 'accounts:sign-in' %}">Sign in</a>
+  
 </body>
 </html>

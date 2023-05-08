@@ -10,8 +10,7 @@ class UserForm(UserCreationForm):
 
 	class Meta:
 		model = User
-		fields = ('username', 'password1', 'password2')
-
+		fields = ('username' ,'password1', 'password2')
 
 
 class AuthForm(AuthenticationForm):
@@ -21,7 +20,6 @@ class AuthForm(AuthenticationForm):
 	class Meta:
 		model = User
 		fields = ('username','password')
-
 
 
 class UserProfileForm(forms.ModelForm):
@@ -39,6 +37,7 @@ class UserAlterationForm(forms.ModelForm):
 	first_name = forms.CharField(max_length=150, required=True, widget=forms.TextInput())
 	last_name = forms.CharField(max_length=150, required=True, widget=forms.TextInput())
 	email = forms.EmailField(max_length=254, required=True, widget=forms.EmailInput())
+	
 	class Meta:
 		model = User
 		fields = ('first_name', 'last_name', 'email')

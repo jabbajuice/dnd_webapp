@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Luminiera+Fantasy" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>D&D Character List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .character-list {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .character-list li {
+            margin-bottom: 10px;
+        }
+        .character-details {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .character-details h2 {
+            margin-top: 0;
+        }
+        .character-details p {
+            margin-bottom: 10px;
+        }
+        .back-button {
+            display: block;
+            margin-top: 10px;
+        }
+        h1{
+        text-align: center;
+      }  
+
+      h2{
+        font-size: medium;
+      }
+      body {
+        font-family: 'Luminari', Georgia, 'Times New Roman', Times, serif;
+        color: black;
+      }
+      .jumbotron-transparent {
+        text-align: center;
+        background-color: rgba(0,0,0,0);
+      }
+      body{
+        background-image: url('https://wallpaperaccess.com/full/1578713.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+ 
+      }
+      ul{
+        color: black;
+        font-size: medium;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#" >CharacterForge</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Dashboard</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <h1>My Character Sheet </h1>
+    <div class="character-list">
+        <ul>
+            <li>
+                <a>{{ character.CharacterName }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="character-details">
+        <h3>Character Details</h3>
+        <p><strong>Name:</strong> {{ character.CharacterName }}</p>
+        <p><strong>Race:</strong> {{ character.Race }}</p>
+        <p><strong>Class:</strong> {{ character.Class }}</p>
+
+        <h3>Character Stats</h3>
+        <p>Strength: {{ character.Strength}}</p>
+        <p>Dexterity: {{ character.Dexterity}}</p>
+        <p>Constitution: {{ character.Constitution}}</p>
+        <p>Intelligence: {{ character.Intelligence}}</p>
+        <p>Wisdom: {{ character.Wisdom}} </p>
+        <p>Charisma: {{ character.Charisma }}</p>
+        <a href="{% url 'accounts:account-dashboard' %}" class="back-button">Back to Character List</a>
+    </div>
+</body>
+</html>
